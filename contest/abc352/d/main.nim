@@ -1,27 +1,26 @@
 import algorithm
-import sequtils
-import strutils
 
-let nk = stdin.readLine.split.map(parseInt)
-let pIn = stdin.readLine.split.map(parseInt)
-var p = newSeq[(int, int)](nk[0])
+import atcoder/extra/structure/set_map
+import atcoder/header
 
-for i in 0 ..< nk[0]:
-  p[i] = (pIn[i], i)
+let n, k = nextInt()
+var p = newSeq[(int, int)](n)
 
-proc sortByP(x, y: (int, int)): int =
-  cmp(x[0], y[0])
+for i in 0 ..< n:
+  p[i] = (nextInt(), i)
 
-p.sort(sortByP)
+p = p.sortedByIt(it[0])
 
-var i = newSeq[int](nk[1])
-for j in 0 ..< nk[1]:
-  i[j] = p[j][1]
+var q = initSortedSet[int]()
 
-var ans = i[i.maxIndex] - i[i.minIndex]
-for j in 1 ..< nk[0] - nk[1]:
-  i.delete(0)
-  i.add(p[j + nk[1] - 1][1])
-  ans = min(ans, i[i.maxIndex] - i[i.minIndex])
+for i in 0 ..< k:
+  q.insert(p[i][1])
 
-echo ans
+var minVal = *q.end().pred - *q.begin()
+
+for i in 0 ..< n - k:
+  q.erase(p[i][1])
+  q.insert(p[i + k][1])
+  minVal = min(minVal, *q.end().pred - *q.begin())
+
+echo minVal
