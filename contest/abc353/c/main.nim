@@ -1,17 +1,21 @@
+import algorithm
+import math
+import sequtils
+
 import atcoder/header
 
 let n = nextInt()
-var a = newSeq[int](n)
+var a = newSeqWith(n, nextInt()).sorted
+const c = 100_000_000
+var cnt: int
+var r = n
 
 for i in 0 ..< n:
-  a[i] = nextInt()
+  r = max(r, i + 1)
 
-const c = 100_000_000
+  while i < r - 1 and a[i] + a[r - 1] >= c:
+    r -= 1
 
-var (l, r) = (0, n - 1)
-while l < r:
-  let m = (l + r) / 2
-  if a[m] >= c / 2:
-    r = m
-  else:
-    l = m + 1
+  cnt += n - r
+
+echo a.sum * (n - 1) - cnt * c
