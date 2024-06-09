@@ -2,37 +2,32 @@
 using namespace std;
 typedef long long ll;
 
-vector<vector<string>> carpet(int level) {
-  if (level == 0) {
-    return {{"#"}};
+string toTernaryStr(int x, int digits) {
+  string result = "";
+  for (int i = digits; i >= 0; i--) {
+    int N = pow(3, i);
+    result += to_string(x / N);
+    x %= N;
   }
-  auto part = carpet(level - 1);
-  static vector<vector<string>> whole(part.size() * 3);
-  static vector<string> white(part.size(), ".");
-  for (int i = 0; i < part.size(); i++) {
-    for (int j = 0; j < 3; j++) {
-      whole[i].insert(whole[i].end(), part[i].begin(), part[i].end());
-      if (j != 1) {
-        whole[i + part.size()].insert(whole[i + part.size()].end(),
-                                      part[i].begin(), part[i].end());
-      } else {
-        whole[i + part.size()].insert(whole[i + part.size()].end(),
-                                      white.begin(), white.end());
-      }
-      whole[i + 2 * part.size()].insert(whole[i + 2 * part.size()].end(),
-                                        part[i].begin(), part[i].end());
-    }
-  }
-  return whole;
+  return result;
 }
 
 int main() {
   int n;
   cin >> n;
-  auto ans = carpet(n);
-  for (int i = 0; i < ans.size(); i++) {
-    for (int j = 0; ans[i].size(); j++) {
-      cout << ans[i][j];
+  int row = pow(3, n);
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < row; j++) {
+      string iStr = toTernaryStr(i, n - 1);
+      string jStr = toTernaryStr(j, n - 1);
+      string cell = "#";
+      for (int k = 0; k < n; k++) {
+        if (iStr[k] == '1' && jStr[k] == '1') {
+          cell = ".";
+          break;
+        }
+      }
+      cout << cell;
     }
     cout << "\n";
   }
