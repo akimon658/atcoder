@@ -1,0 +1,1 @@
+/Users/akimon658/Google Drive/マイドライブ/AtCoder/template.cpp
