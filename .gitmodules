@@ -1,0 +1,6 @@
+[submodule "stdc++/bits"]
+	path = stdc++/bits
+	url = https://github.com/tekfyl/bits-stdc-.h-for-mac.git
+[submodule "ac-library"]
+	path = ac-library
+	url = https://github.com/atcoder/ac-library.git
