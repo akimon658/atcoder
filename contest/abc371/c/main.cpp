@@ -23,7 +23,8 @@ int main() {
     cin >> u >> v;
     u--;
     v--;
-    g[min(u, v)].insert(max(u, v));
+    g[u].insert(v);
+    g[v].insert(u);
   }
   cin >> m_h;
   vector<set<int>> h(n);
@@ -32,23 +33,30 @@ int main() {
     cin >> a >> b;
     a--;
     b--;
-    h[min(a, b)].insert(max(a, b));
+    h[a].insert(b);
+    h[b].insert(a);
   }
-  vector<vector<ll>> a(n - 1);
-  rep(i, 0, n - 1) {
-    vector<ll> sub_a(n - 1 - i);
-    rep(j, i + 1, n) { cin >> sub_a[j]; }
-    a[i] = sub_a;
-  }
-  ll sum = 0;
+  vector<vector<ll>> a(n, vector<ll>(n));
   rep(i, 0, n - 1) {
     rep(j, i + 1, n) {
-      if (g[i].contains(j) == h[i].contains(j)) {
-        continue;
-      }
-      cout << format("i = {}, j = {}", i, j) << el;
-      sum += a[i][j];
+      cin >> a[i][j];
+      a[j][i] = a[i][j];
     }
   }
-  cout << sum << el;
+  vector<int> p(n);
+  iota(all(p), 0);
+  ll ans = LLONG_MAX;
+  do {
+    ll sum = 0;
+    rep(i, 0, n - 1) {
+      rep(j, i + 1, n) {
+        if (g[p[i]].contains(p[j]) == h[i].contains(j)) {
+          continue;
+        }
+        sum += a[i][j];
+      }
+    }
+    ans = min(sum, ans);
+  } while (next_permutation(all(p)));
+  cout << ans << el;
 }
