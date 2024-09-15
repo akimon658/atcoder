@@ -7,6 +7,8 @@ using namespace std;
 typedef long long ll;
 
 const string el = "\n";
+const string Yes = "Yes";
+const string No = "No";
 
 #define all(x) x.begin(), x.end()
 #define rep(i, min, sup)                                                       \
