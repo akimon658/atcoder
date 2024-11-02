@@ -2,7 +2,7 @@
 
 .clangd
 .DS_Store
-.pdm-python
+.python-version
 
 a.out
 main.exe

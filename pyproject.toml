@@ -1,17 +1,8 @@
 [project]
-name = "AtCoder"
+name = "atcoder"
 version = "0.1.0"
-description = "Default template for PDM package"
-authors = [
-    {name = "Takumi Akimoto", email = "81888693+akimon658@users.noreply.github.com"},
-]
-dependencies = [
-    "online-judge-tools>=11.5.1",
-    "setuptools>=75.1.0",
-]
 requires-python = ">=3.8"
-license = {text = "Apache-2.0"}
-
-
-[tool.pdm]
-distribution = false
+dependencies = [
+    "online-judge-tools==11.5.1",
+    "setuptools==75.3.0",
+]
