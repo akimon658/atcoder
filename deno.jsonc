@@ -3,6 +3,6 @@
     "acc": "deno run --allow-env --allow-net --allow-read --allow-run --allow-sys --allow-write npm:atcoder-cli@2.2.0/bin/index.js",
     "new": "deno task --cwd $INIT_CWD acc new",
     "submit": "deno task --cwd $INIT_CWD acc submit",
-    "test": "cd $INIT_CWD && oj test --ignore-spaces-and-newline -c \"sh -c 'clang++ -std=c++20 -Wall -Wextra -Wimplicit-fallthrough --include-directory=$INIT_CWD/../../../ac-library --include-directory=$INIT_CWD/../../../stdc++ main.cpp -o main && ./main'\"",
+    "test": "cd $INIT_CWD && oj test --ignore-spaces-and-newline -c \"sh -c 'clang++ -std=c++20 -Wall -Wextra -Wimplicit-fallthrough -Wno-unused-const-variable --include-directory=$INIT_CWD/../../../ac-library --include-directory=$INIT_CWD/../../../stdc++ main.cpp -o main && ./main'\"",
   },
 }
