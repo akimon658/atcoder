@@ -14,6 +14,8 @@ const string No = "No";
 #define rep(i, min, sup)                                                       \
   for (int i = static_cast<int>(min); i < static_cast<int>(sup); i++)
 
+template <class... T> void input(T &...a) { (cin >> ... >> a); }
+
 int main() {
   cin.tie(nullptr);
   ios::sync_with_stdio(false);
