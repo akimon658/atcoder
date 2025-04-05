@@ -4,6 +4,7 @@
 using namespace atcoder;
 using namespace std;
 
+typedef long double ld;
 typedef long long ll;
 
 const string el = "\n";
