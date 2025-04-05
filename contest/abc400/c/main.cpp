@@ -1,0 +1,32 @@
+#include <atcoder/all>
+#include <bits/stdc++.h>
+
+using namespace atcoder;
+using namespace std;
+
+typedef long long ll;
+
+const string el = "\n";
+const string Yes = "Yes";
+const string No = "No";
+
+#define all(x) x.begin(), x.end()
+#define rep(i, min, sup)                                                       \
+  for (int i = static_cast<int>(min); i < static_cast<int>(sup); i++)
+
+template <class... T> void input(T &...a) { (cin >> ... >> a); }
+
+int main() {
+  cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  long double n;
+  input(n);
+  long double pow = 1;
+  ll ans = 0;
+  rep(a, 1, 60) {
+    pow *= 2;
+    ll b = sqrt(n / pow);
+    ans += b / 2 + b % 2;
+  }
+  cout << ans << el;
+}
