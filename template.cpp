@@ -20,4 +20,5 @@ template <class... T> void input(T &...a) { (cin >> ... >> a); }
 int main() {
   cin.tie(nullptr);
   ios::sync_with_stdio(false);
+  // cout << setprecision(numeric_limits<double>::max_digits10);
 }
